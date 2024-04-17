@@ -113,12 +113,79 @@
 -- Drop existing tables, so you'll start fresh each time this script is run.
 -- TODO!
 
+DROP TABLE IF EXISTS movies;
+DROP TABLE IF EXISTS studios;
+DROP TABLE IF EXISTS actors;
+DROP TABLE IF EXISTS movie_roles;
+
+
+
 -- Create new tables, according to your domain model
 -- TODO!
 
+CREATE TABLE movies (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  title TEXT,
+  movie_year INTEGER,
+  MPAA_rating TEXT,
+  studio_id INTEGER
+);
+
+CREATE TABLE studios (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  studio_name TEXT
+);
+
+CREATE TABLE actors (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+    first_name TEXT,
+    last_name TEXT
+);
+
+CREATE TABLE movie_roles (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  role_name TEXT,
+  actor_id INTEGER,
+  movie_id INTEGER
+);
+
 -- Insert data into your database that reflects the sample data shown above
 -- Use hard-coded foreign key IDs when necessary
--- TODO!
+
+INSERT INTO movies
+    ( title, movie_year, mpaa_rating, studio_id)
+    VALUES
+        ('Batman Begins', '2005', 'PG-13', '1'),
+        ('The Dark Knight', '2008', 'PG-13', '1'),
+        ('The Dark Knight Rises', '2012', 'PG-13', '1'); --select * from movies;
+
+INSERT INTO studios (
+    studio_name
+)
+VALUES (
+   "Warner Bros"
+);
+
+INSERT INTO movie_roles (
+    role_name,
+    actor_id,
+    movie_id
+)
+    VALUES
+        ('Bruce Wayne', , 1),
+        ('Alfred', , 1),
+        ("Ra's Al Ghul", ,1);
+        ('Rachel Dawes', , 1),
+        ('Bruce Wayne', , 2),
+        ('Jocker', ,2),
+        ('Harvey Dent', , 2),
+        ('Alfred', , 2),
+        ('Rachel Dawes', ,2),
+        ('Bruce Wayne', , 3),
+        ('Comissioner Gordon', , 3),
+        ('Bane', , 3),
+        ('John Blake', , 3),
+        ('Selina Kyle', , 3);
 
 -- Prints a header for the movies output
 .print "Movies"
