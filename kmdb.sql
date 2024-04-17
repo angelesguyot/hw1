@@ -166,26 +166,42 @@ VALUES (
    "Warner Bros"
 );
 
+INSERT INTO actors
+    ( first_name, last_name)
+    VALUES
+        ('Tom', 'Hardy'),
+        ('Maggie', 'Gyllenhaal'),
+        ('Liam', 'Neeson'),
+        ('Katie', 'Holmes'),
+        ('Heath', 'Ledger'),
+        ('Gary', 'Oldman'),
+        ('Christian', 'Bale'),
+        ('Anne', 'Hathaway'),
+        ('Aaron', 'Eckhart'),
+        (' Michael', 'Caine'),
+        (' Joseph', 'Gordon-Levitt');
+
 INSERT INTO movie_roles (
     role_name,
     actor_id,
     movie_id
 )
     VALUES
-        ('Bruce Wayne', , 1),
-        ('Alfred', , 1),
-        ("Ra's Al Ghul", ,1);
-        ('Rachel Dawes', , 1),
-        ('Bruce Wayne', , 2),
-        ('Jocker', ,2),
-        ('Harvey Dent', , 2),
-        ('Alfred', , 2),
-        ('Rachel Dawes', ,2),
-        ('Bruce Wayne', , 3),
-        ('Comissioner Gordon', , 3),
-        ('Bane', , 3),
-        ('John Blake', , 3),
-        ('Selina Kyle', , 3);
+        ('Bruce Wayne',7, 1),
+        ('Alfred',10, 1),
+        ("Ra's Al Ghul",3,1),
+        ('Rachel Dawes',4, 1),
+        ('Commissioner Gordon',6, 2),
+        ('Bruce Wayne',7,2),
+        ('Jocker',5,2),
+        ('Harvey Dent',9,2),
+        ('Alfred',10,2),
+        ('Rachel Dawes',2,2),
+        ('Bruce Wayne',7,3),
+        ('Comissioner Gordon',6,3),
+        ('Bane',1,3),
+        ('John Blake',11,3),
+        ('Selina Kyle',8,3);
 
 -- Prints a header for the movies output
 .print "Movies"
@@ -193,7 +209,10 @@ INSERT INTO movie_roles (
 .print ""
 
 -- The SQL statement for the movies output
--- TODO!
+select title, movie_year, MPAA_rating, studio_name
+from movies
+inner join studios s
+on s.id=movies.studio_id;
 
 -- Prints a header for the cast output
 .print ""
@@ -203,4 +222,14 @@ INSERT INTO movie_roles (
 
 
 -- The SQL statement for the cast output
--- TODO!
+select
+title,
+first_name,
+last_name,
+role_name
+
+from movies m
+inner join movie_roles mr
+on mr.movie_id=m.id
+inner join actors a
+on a.id=mr.actor_id;
