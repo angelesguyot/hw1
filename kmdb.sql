@@ -157,7 +157,8 @@ INSERT INTO movies
     VALUES
         ('Batman Begins', '2005', 'PG-13', '1'),
         ('The Dark Knight', '2008', 'PG-13', '1'),
-        ('The Dark Knight Rises', '2012', 'PG-13', '1'); --select * from movies;
+        ('The Dark Knight Rises', '2012', 'PG-13', '1'); 
+        --select * from movies;
 
 INSERT INTO studios (
     studio_name
@@ -178,8 +179,8 @@ INSERT INTO actors
         ('Christian', 'Bale'),
         ('Anne', 'Hathaway'),
         ('Aaron', 'Eckhart'),
-        (' Michael', 'Caine'),
-        (' Joseph', 'Gordon-Levitt');
+        ('Michael', 'Caine'),
+        ('Joseph', 'Gordon-Levitt');
 
 INSERT INTO movie_roles (
     role_name,
@@ -224,8 +225,7 @@ on s.id=movies.studio_id;
 -- The SQL statement for the cast output
 select
 title,
-first_name,
-last_name,
+first_name || ' ' || last_name as actor_name,
 role_name
 
 from movies m
